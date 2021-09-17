@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/drawable/splashscreen.xml" value="0.10885416666666667" />
         <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/layout/activity_pokemon.xml" value="0.1" />
       </map>
     </option>
   </component>
