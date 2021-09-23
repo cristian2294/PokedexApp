@@ -1,4 +1,4 @@
-package com.example.pokedexapp
+package com.example.pokedexapp.data
 
 import com.google.gson.annotations.SerializedName
 

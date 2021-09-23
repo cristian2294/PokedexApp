@@ -1,13 +1,10 @@
-package com.example.pokedexapp
+package com.example.pokedexapp.ui.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import com.example.pokedexapp.R
 import com.example.pokedexapp.databinding.ActivityMainBinding
-import com.example.pokedexapp.model.APIService
-import retrofit2.*
-import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
