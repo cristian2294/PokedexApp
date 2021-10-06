@@ -7,6 +7,9 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.pokedexapp.adapter.PokemonAdapter
 import com.example.pokedexapp.data.PokeResponse
 import com.example.pokedexapp.data.network.PokeApiClient
 import com.example.pokedexapp.databinding.ActivityMainBinding
@@ -25,13 +28,21 @@ class PokemonActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    // variables for recyclerView
+    private var pokemonList : RecyclerView? = null
+    private lateinit var pokemondapter: PokemonAdapter
+    private lateinit var layoutManager: RecyclerView.LayoutManager
+
     private val pokemonViewModel: PokemonViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        pokemonViewModel.onCreate()
 
+        ActivityMainBinding.inflate(layoutInflater).apply {
+            setContentView(root)
+
+            pokemonViewModel.onCreate()
+            pokemonViewModel.getPokemonsUseCase
+        }
     }
 }

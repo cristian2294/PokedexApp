@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PokedexApp</string>
+    <string name="pokemon_name">Pokemon Name</string>
+    <string name="pokemon_height">Height</string>
+    <string name="pokemon_weight">Weight</string>
+    <string name="pokemon_id">id</string>
 </resources>
