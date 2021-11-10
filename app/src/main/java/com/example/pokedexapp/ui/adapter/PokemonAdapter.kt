@@ -1,17 +1,16 @@
 
-package com.example.pokedexapp.adapter
+package com.example.pokedexapp.ui.adapter
+
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexapp.R
-import com.example.pokedexapp.data.PokeResponse
-import com.example.pokedexapp.data.Pokemon
 import com.example.pokedexapp.data.Result
-import com.example.pokedexapp.viewholder.PokemonViewHolder
-import com.squareup.picasso.Picasso
+import com.example.pokedexapp.ui.viewholder.PokemonViewHolder
 
-class PokemonAdapter(private val pokemonList: List<Pokemon>)
+class PokemonAdapter(private val pokemonList: List<Result>)
     : RecyclerView.Adapter<PokemonViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
@@ -23,15 +22,8 @@ class PokemonAdapter(private val pokemonList: List<Pokemon>)
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         val pokemon = pokemonList[position]
-        holder.id.text = pokemon.id.toString()
-        holder.name.text = pokemon.name
-        holder.height.text = pokemon.height.toString()
-        holder.weight.text = pokemon.weight.toString()
-
-        val uri = pokemon.images.frontDefault
-        Picasso.get()
-            .load(uri)
-            .into(holder.image)
+        holder.name.text =  pokemon.name
+        holder.url.text  = pokemon.url
     }
 
     override fun getItemCount(): Int {

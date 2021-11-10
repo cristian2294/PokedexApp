@@ -2,47 +2,49 @@ package com.example.pokedexapp.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedexapp.adapter.PokemonAdapter
+import com.example.pokedexapp.R
 import com.example.pokedexapp.data.PokeResponse
-import com.example.pokedexapp.data.network.PokeApiClient
-import com.example.pokedexapp.databinding.ActivityMainBinding
+import com.example.pokedexapp.databinding.ActivityPokemonBinding
+import com.example.pokedexapp.ui.adapter.PokemonAdapter
 import com.example.pokedexapp.ui.viewmodel.PokemonViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
+// viewBinding
+private lateinit var binding:ActivityPokemonBinding
+
+// variables for recyclerView
+private  var pokemonList : RecyclerView? = null
+private lateinit var pokemondapter: PokemonAdapter
+private lateinit var layoutManager: RecyclerView.LayoutManager
 
 class PokemonActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-
-    // variables for recyclerView
-    private var pokemonList : RecyclerView? = null
-    private lateinit var pokemondapter: PokemonAdapter
-    private lateinit var layoutManager: RecyclerView.LayoutManager
-
+    // Init VM
     private val pokemonViewModel: PokemonViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityPokemonBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        ActivityMainBinding.inflate(layoutInflater).apply {
-            setContentView(root)
+        pokemonList = findViewById(R.id.rvPokemons)
 
-            pokemonViewModel.onCreate()
-            pokemonViewModel.getPokemonsUseCase
+        pokemonViewModel.getPokemons()
+
+        // Create the observer which updates the UI.
+        val pokeObserver = Observer<PokeResponse> { pokeResponse ->
+            // Update the UI for show the data in the recyclerview
+            layoutManager = LinearLayoutManager(this)
+            pokemonList?.layoutManager = layoutManager
+            pokemondapter = PokemonAdapter(pokeResponse.results)
+            pokemonList?.adapter = pokemondapter
         }
+
+        // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
+        pokemonViewModel.pokeModel.observe(this, pokeObserver)
     }
+
 }
