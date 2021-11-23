@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexapp.R
 import com.example.pokedexapp.data.PokeResponse
@@ -30,14 +30,14 @@ class PokemonActivity : AppCompatActivity() {
         binding = ActivityPokemonBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        pokemonList = findViewById(R.id.rvPokemons)
+        pokemonList = binding.rvPokemons
 
         pokemonViewModel.getPokemons()
 
         // Create the observer which updates the UI.
         val pokeObserver = Observer<PokeResponse> { pokeResponse ->
             // Update the UI for show the data in the recyclerview
-            layoutManager = LinearLayoutManager(this)
+            layoutManager = GridLayoutManager(this,3)
             pokemonList?.layoutManager = layoutManager
             pokemondapter = PokemonAdapter(pokeResponse.results)
             pokemonList?.adapter = pokemondapter

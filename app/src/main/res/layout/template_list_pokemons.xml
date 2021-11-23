@@ -14,6 +14,15 @@
         android:orientation="vertical"
         android:layout_marginStart="3dp">
 
+        <ImageView
+            android:id="@+id/ivPokemon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@color/cardview_shadow_start_color"
+            android:layout_margin="8dp"
+            android:layout_gravity="center" />
+
+
         <TextView
             android:id="@+id/tvNamePokemon"
             android:layout_width="wrap_content"
@@ -21,7 +30,10 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:text="@string/pokemon_name"
             android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,7 +41,9 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:text="@string/pokemon_height"
             android:layout_marginTop="4dp"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"/>
 
 
     </LinearLayout>

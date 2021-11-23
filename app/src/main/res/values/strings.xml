@@ -4,4 +4,5 @@
     <string name="pokemon_height">Height</string>
     <string name="pokemon_weight">Weight</string>
     <string name="pokemon_id">id</string>
+    <string name="name_detail_pokemon">Name Pokemon</string>
 </resources>
