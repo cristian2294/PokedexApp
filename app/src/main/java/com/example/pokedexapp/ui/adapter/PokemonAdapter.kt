@@ -2,16 +2,20 @@
 package com.example.pokedexapp.ui.adapter
 
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.pokedexapp.R
 import com.example.pokedexapp.data.Result
 import com.example.pokedexapp.ui.view.DetailPokemon
 import com.example.pokedexapp.ui.viewholder.PokemonViewHolder
 
-class PokemonAdapter(private val pokemonList: List<Result>)
+class PokemonAdapter(private val pokemonList: List<Result>, private val context: Context)
     : RecyclerView.Adapter<PokemonViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
@@ -21,10 +25,15 @@ class PokemonAdapter(private val pokemonList: List<Result>)
         return PokemonViewHolder(layoutView)
     }
 
+
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         val pokemon = pokemonList[position]
+        holder.id.text = "#"+(position+1).toString()
         holder.name.text =  pokemon.name
-        holder.url.text  = pokemon.url
+        Glide.with(context).load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png")
+            .centerCrop()
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .into(holder.ivPokemon)
 
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context,DetailPokemon::class.java)

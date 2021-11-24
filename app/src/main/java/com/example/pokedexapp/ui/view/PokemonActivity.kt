@@ -6,7 +6,6 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedexapp.R
 import com.example.pokedexapp.data.PokeResponse
 import com.example.pokedexapp.databinding.ActivityPokemonBinding
 import com.example.pokedexapp.ui.adapter.PokemonAdapter
@@ -39,7 +38,7 @@ class PokemonActivity : AppCompatActivity() {
             // Update the UI for show the data in the recyclerview
             layoutManager = GridLayoutManager(this,3)
             pokemonList?.layoutManager = layoutManager
-            pokemondapter = PokemonAdapter(pokeResponse.results)
+            pokemondapter = PokemonAdapter(pokeResponse.results, this)
             pokemonList?.adapter = pokemondapter
         }
 

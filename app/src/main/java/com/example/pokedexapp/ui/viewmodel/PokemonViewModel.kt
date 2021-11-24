@@ -23,5 +23,4 @@ class PokemonViewModel: ViewModel(){
             pokeModel.value = pokeResponse
         }
     }
-
 }

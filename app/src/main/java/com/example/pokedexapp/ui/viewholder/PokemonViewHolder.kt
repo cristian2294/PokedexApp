@@ -9,6 +9,7 @@ import com.example.pokedexapp.R
 
 class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+    var ivPokemon: ImageView = itemView.findViewById(R.id.ivPokemon)
+    var id: TextView = itemView.findViewById(R.id.tvidPokemon)
     var name: TextView = itemView.findViewById(R.id.tvNamePokemon)
-    var url: TextView = itemView.findViewById(R.id.tvUrlPokemon)
 }
