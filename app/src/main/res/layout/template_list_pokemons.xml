@@ -30,7 +30,10 @@
             android:text="@string/idPokemon"
             android:layout_marginTop="8dp"
             android:layout_gravity="center"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:textColor="@color/number_id"
+            android:fontFamily="@font/roboto_condensed_regular"
+            />
 
         <TextView
             android:id="@+id/tvNamePokemon"
@@ -40,7 +43,9 @@
             android:text="@string/pokemon_name"
             android:layout_marginTop="8dp"
             android:layout_gravity="center"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:fontFamily="@font/ubuntu_regular"
+            android:textColor="@color/black"/>
 
 
     </LinearLayout>

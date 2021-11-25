@@ -5,7 +5,8 @@
       <map>
         <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/drawable/pokemon_gradient.xml" value="0.10260416666666666" />
         <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/drawable/splashscreen.xml" value="0.10885416666666667" />
-        <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/layout/activity_detail_pokemon.xml" value="0.22" />
+        <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/font/font.xml" value="0.1" />
+        <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/layout/activity_detail_pokemon.xml" value="0.2" />
         <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/layout/activity_pokemon.xml" value="0.15" />
         <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/layout/template_list_pokemons.xml" value="0.2" />

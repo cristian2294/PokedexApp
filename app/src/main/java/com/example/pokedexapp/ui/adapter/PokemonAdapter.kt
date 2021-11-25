@@ -28,7 +28,7 @@ class PokemonAdapter(private val pokemonList: List<Result>, private val context:
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         val pokemon = pokemonList[position]
-        holder.id.text = "#"+(position+1).toString()
+        holder.id.text = "N°"+(position+1).toString()
         holder.name.text =  pokemon.name
         Glide.with(context).load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png")
             .centerCrop()

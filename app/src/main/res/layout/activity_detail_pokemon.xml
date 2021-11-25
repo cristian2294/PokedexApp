@@ -24,11 +24,22 @@
             <ImageView
                 android:id="@+id/ivDetailPokemon"
                 android:src="@color/cardview_shadow_start_color"
-                android:layout_width="200dp"
-                android:layout_height="150dp"
+                android:layout_width="250dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:layout_margin="12dp"
                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDetailIdPokemon"
+                android:text="@string/idPokemon"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:textColor="@color/number_id"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
 
             <TextView
                 android:id="@+id/tvDetailNamePokemon"
@@ -36,8 +47,59 @@
                 android:layout_height="wrap_content"
                 android:text="@string/name_detail_pokemon"
                 android:layout_gravity="center"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+                android:fontFamily="@font/ubuntu_regular"
+                android:textColor="@color/black"/>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/underline"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="8dp"/>
         </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="96dp"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:text="@string/pokemon_weight"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.854" />
+
+            <TextView
+                android:id="@+id/tvDetailWeightPokemon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:text="@string/weight_pokemon"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textColor="@color/number_id"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.145"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.854" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     </androidx.cardview.widget.CardView>
 

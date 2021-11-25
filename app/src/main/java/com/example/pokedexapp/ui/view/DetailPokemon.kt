@@ -8,19 +8,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
-import com.example.pokedexapp.data.PokeResponse
 import com.example.pokedexapp.data.Pokemon
 import com.example.pokedexapp.databinding.ActivityDetailPokemonBinding
-import com.example.pokedexapp.ui.adapter.PokemonAdapter
 import com.example.pokedexapp.ui.viewmodel.DetailPokemonViewModel
-import com.example.pokedexapp.ui.viewmodel.PokemonViewModel
 
 // viewBinding
 private lateinit var binding: ActivityDetailPokemonBinding
-
-private lateinit var name: String
 
 class DetailPokemon : AppCompatActivity() {
 
@@ -29,7 +23,9 @@ class DetailPokemon : AppCompatActivity() {
 
     //UI variables
     private lateinit var ivDetailPokemon: ImageView
+    private lateinit var tvDetailIdPokemon: TextView
     private lateinit var tvDetailNamePokemon: TextView
+    private lateinit var tvDetailWeightPokemon: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +41,9 @@ class DetailPokemon : AppCompatActivity() {
         // Create the observer which updates the UI.
         val pokeObserver = Observer<Pokemon> { pokeResponse ->
             // Update the UI for show data of detail pokemon.
+            tvDetailIdPokemon.text = "N° " + pokeResponse.id.toString()
             tvDetailNamePokemon.text = pokeResponse.name
+            tvDetailWeightPokemon.text = (pokeResponse.weight/100).toString() + " Kg"
             Glide.with(this).load(pokeResponse.sprites.front_default)
                 .into(ivDetailPokemon)
         }
@@ -56,6 +54,8 @@ class DetailPokemon : AppCompatActivity() {
 
     private fun initUI(){
          ivDetailPokemon = binding.ivDetailPokemon
+         tvDetailIdPokemon = binding.tvDetailIdPokemon
          tvDetailNamePokemon = binding.tvDetailNamePokemon
+         tvDetailWeightPokemon = binding.tvDetailWeightPokemon
     }
 }
