@@ -30,7 +30,8 @@ class PokemonAdapter(private val pokemonList: List<Result>, private val context:
         val pokemon = pokemonList[position]
         holder.id.text = "N°"+(position+1).toString()
         holder.name.text =  pokemon.name
-        Glide.with(context).load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png")
+        Glide.with(context)
+            .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+(position+1).toString()+".png")
             .centerCrop()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(holder.ivPokemon)

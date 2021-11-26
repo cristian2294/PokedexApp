@@ -2,6 +2,7 @@ package com.example.pokedexapp.data
 
 import com.google.gson.annotations.SerializedName
 
+
 data class PokeResponse(
 
     @SerializedName("results")
@@ -29,7 +30,7 @@ data class Pokemon(
     @SerializedName("weight")
     var weight: Int,
     @SerializedName("sprites")
-    var sprites: Sprite
+    var sprites: Sprite,
 
 )
 
@@ -37,8 +38,20 @@ data class Sprite(
     @SerializedName("front_default")
     var front_default: String?,
     @SerializedName("front_shiny")
-    var front_shiny: String?
+    var front_shiny: String?,
+    @SerializedName("other")
+    var other: Other
+
     )
 
+data class Other (
+    @SerializedName("official-artwork")
+    var officialArtwork: OfficialArtwork
+        )
+
+data class  OfficialArtwork(
+    @SerializedName("front_default")
+    var front_default: String
+)
 
 

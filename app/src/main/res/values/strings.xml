@@ -6,5 +6,7 @@
     <string name="pokemon_id">id</string>
     <string name="name_detail_pokemon">Name Pokemon</string>
     <string name="idPokemon">id</string>
-    <string name="weight_pokemon">5 mt</string>
+    <string name="weight_pokemon">5 Kg</string>
+    <string name="height_pokemon">5 mt</string>
+    <string name="number_pokemon">N° </string>
 </resources>
