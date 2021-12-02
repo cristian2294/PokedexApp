@@ -53,6 +53,17 @@
                 android:fontFamily="@font/ubuntu_regular"
                 android:textColor="@color/black"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDetailTypePokemon"
+                android:text="@string/type_pokemon"
+                android:layout_gravity="center"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+
+                />
+
             <View
                 android:id="@+id/divider"
                 android:layout_width="match_parent"
@@ -60,19 +71,19 @@
                 android:background="@color/underline"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="4dp"/>
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="12dp">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="96dp"
+                android:layout_marginStart="80dp"
                 android:fontFamily="@font/roboto_condensed_regular"
                 android:text="@string/pokemon_weight"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
@@ -80,7 +91,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.854" />
+                app:layout_constraintVertical_bias="0.889" />
 
             <TextView
                 android:id="@+id/tvDetailWeightPokemon"
@@ -94,40 +105,40 @@
                 android:textColor="@color/number_id"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.145"
+                app:layout_constraintHorizontal_bias="0.156"
                 app:layout_constraintStart_toEndOf="@+id/textView"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.854" />
+                app:layout_constraintVertical_bias="0.9" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="96dp"
+                android:layout_marginStart="80dp"
+                android:fontFamily="@font/roboto_condensed_regular"
                 android:text="@string/pokemon_height"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
-                app:layout_constraintVertical_bias="0.285"
-                android:fontFamily="@font/roboto_condensed_regular"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                android:textColor="@color/black"/>
+                app:layout_constraintVertical_bias="0.538" />
 
             <TextView
                 android:id="@+id/tvDetailHeightPokemon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto_condensed_regular"
                 android:text="@string/height_pokemon"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textColor="@color/number_id"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.215"
+                app:layout_constraintHorizontal_bias="0.189"
                 app:layout_constraintStart_toEndOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/tvDetailWeightPokemon"
-                app:layout_constraintVertical_bias="0.038"
-                android:fontFamily="@font/roboto_condensed_regular"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textColor="@color/number_id"/>
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

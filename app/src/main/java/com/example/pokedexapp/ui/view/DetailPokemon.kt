@@ -9,7 +9,9 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
+import com.example.pokedexapp.data.PokeType
 import com.example.pokedexapp.data.Pokemon
+import com.example.pokedexapp.data.Type
 import com.example.pokedexapp.databinding.ActivityDetailPokemonBinding
 import com.example.pokedexapp.ui.viewmodel.DetailPokemonViewModel
 
@@ -27,6 +29,8 @@ class DetailPokemon : AppCompatActivity() {
     private lateinit var tvDetailNamePokemon: TextView
     private lateinit var tvDetailWeightPokemon: TextView
     private lateinit var tvDetailHeightPokemon: TextView
+    private lateinit var tvDetailTypePokemon: TextView
+    private lateinit var types: List<PokeType>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +47,13 @@ class DetailPokemon : AppCompatActivity() {
             // Update the UI for show data of detail pokemon.
             tvDetailIdPokemon.text = "N° " + pokeResponse.id.toString()
             tvDetailNamePokemon.text = pokeResponse.name
-            tvDetailWeightPokemon.text = (pokeResponse.weight/100).toString() + " Kg"
+            tvDetailWeightPokemon.text = ((pokeResponse.weight)*100f/1000f).toString() + " Kg"
             tvDetailHeightPokemon.text = pokeResponse.height.toString() + " Mts"
+            types = pokeResponse.types
+            for (type in types){
+                tvDetailTypePokemon.text = type.type.name
+            }
+
             Glide.with(this).load(pokeResponse.sprites.other.officialArtwork.front_default)
                 .into(ivDetailPokemon)
         }
@@ -59,5 +68,6 @@ class DetailPokemon : AppCompatActivity() {
          tvDetailNamePokemon = binding.tvDetailNamePokemon
          tvDetailWeightPokemon = binding.tvDetailWeightPokemon
          tvDetailHeightPokemon = binding.tvDetailHeightPokemon
+         tvDetailTypePokemon = binding.tvDetailTypePokemon
     }
 }

@@ -9,4 +9,5 @@
     <string name="weight_pokemon">5 Kg</string>
     <string name="height_pokemon">5 mt</string>
     <string name="number_pokemon">N° </string>
+    <string name="type_pokemon">Type</string>
 </resources>

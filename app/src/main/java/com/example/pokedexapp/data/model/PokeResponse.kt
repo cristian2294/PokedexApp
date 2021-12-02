@@ -31,6 +31,8 @@ data class Pokemon(
     var weight: Int,
     @SerializedName("sprites")
     var sprites: Sprite,
+    @SerializedName("types")
+    var types: List<PokeType>
 
 )
 
@@ -52,6 +54,20 @@ data class Other (
 data class  OfficialArtwork(
     @SerializedName("front_default")
     var front_default: String
+)
+
+data class PokeType(
+    @SerializedName("slot")
+    var slot: Int,
+    @SerializedName("type")
+    var type: Type
+)
+
+data class Type(
+    @SerializedName("name")
+    var name: String,
+    @SerializedName("url")
+    var url: String
 )
 
 
