@@ -11,9 +11,9 @@ class PokeService {
     
     private val retrofit = RetrofitHelper.getRetrofit()
 
-    suspend fun getPokemons(): PokeResponse{
+    suspend fun getPokemons(limit: Int, offset: Int): PokeResponse{
         return withContext(Dispatchers.IO) {
-            val response = retrofit.create(PokeApiClient::class.java).getAllPokemons(150, 0)
+            val response = retrofit.create(PokeApiClient::class.java).getAllPokemons(limit, offset)
             response.body()!!
         }
     }

@@ -13,4 +13,31 @@
 
     // UNDERLINE
     <color name="underline">#D8D6D6</color>
+
+    // TEXT
+    <color name="text">#E3350D</color>
+
+    // TRANSPARENT
+    <color name="transparent">#00000000</color>
+
+    // TYPES
+    <color name="TypeNormal">#FFA8A77A</color>
+    <color name="TypeFire">#FFEE8130</color>
+    <color name="TypeWater">#FF6390F0</color>
+    <color name="TypeElectric">#FFF7D02C</color>
+    <color name="TypeGrass">#FF7AC74C</color>
+    <color name="TypeIce">#FF96D9D6</color>
+    <color name="TypeFighting">#FFC22E28</color>
+    <color name="TypePoison">#FFA33EA1</color>
+    <color name="TypeGround">#FFE2BF65</color>
+    <color name="TypeFlying">#FFA98FF3</color>
+    <color name="TypePsychic">#FFF95587</color>
+    <color name="TypeBug">#FFA6B91A</color>
+    <color name="TypeRock">#FFB6A136</color>
+    <color name="TypeGhost">#FF735797</color>
+    <color name="TypeDragon">#FF6F35FC</color>
+    <color name="TypeDark">#FF705746</color>
+    <color name="TypeSteel">#FFB7B7CE</color>
+    <color name="TypeFairy">#FFD685AD</color>
+
 </resources>

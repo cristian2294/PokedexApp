@@ -3,17 +3,17 @@ package com.example.pokedexapp.ui.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.pokedexapp.data.PokeType
 import com.example.pokedexapp.data.Pokemon
-import com.example.pokedexapp.data.Type
 import com.example.pokedexapp.databinding.ActivityDetailPokemonBinding
 import com.example.pokedexapp.ui.viewmodel.DetailPokemonViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // viewBinding
 private lateinit var binding: ActivityDetailPokemonBinding
@@ -29,7 +29,9 @@ class DetailPokemon : AppCompatActivity() {
     private lateinit var tvDetailNamePokemon: TextView
     private lateinit var tvDetailWeightPokemon: TextView
     private lateinit var tvDetailHeightPokemon: TextView
-    private lateinit var tvDetailTypePokemon: TextView
+    private lateinit var tvDetailTypePokemon1: TextView
+    private lateinit var tvDetailTypePokemon2: TextView
+    private lateinit var bottonNavigationView: BottomNavigationView
     private lateinit var types: List<PokeType>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,8 +52,15 @@ class DetailPokemon : AppCompatActivity() {
             tvDetailWeightPokemon.text = ((pokeResponse.weight)*100f/1000f).toString() + " Kg"
             tvDetailHeightPokemon.text = pokeResponse.height.toString() + " Mts"
             types = pokeResponse.types
-            for (type in types){
-                tvDetailTypePokemon.text = type.type.name
+
+            tvDetailTypePokemon1.text = types[0].type.name
+
+            tvDetailTypePokemon2.isVisible = false
+
+            // This if is for validating nullability in the second pokemon type
+            if (types.size >= 2){
+                tvDetailTypePokemon2.text = types[1].type.name
+                tvDetailTypePokemon2.isVisible = true
             }
 
             Glide.with(this).load(pokeResponse.sprites.other.officialArtwork.front_default)
@@ -68,6 +77,10 @@ class DetailPokemon : AppCompatActivity() {
          tvDetailNamePokemon = binding.tvDetailNamePokemon
          tvDetailWeightPokemon = binding.tvDetailWeightPokemon
          tvDetailHeightPokemon = binding.tvDetailHeightPokemon
-         tvDetailTypePokemon = binding.tvDetailTypePokemon
+         tvDetailTypePokemon1 = binding.tvDetailTypePokemon1
+         tvDetailTypePokemon2 = binding.tvDetailTypePokemon2
+         bottonNavigationView = binding.bottomNavigationView
+
+         bottonNavigationView.setBackgroundColor(0)
     }
 }

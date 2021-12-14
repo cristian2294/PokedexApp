@@ -15,10 +15,10 @@ class PokemonViewModel: ViewModel(){
     val pokeModel = MutableLiveData<PokeResponse>()
     var getPokemonsUseCase = GetPokemonsUseCase()
 
-    fun getPokemons(){
+    fun getPokemons(limit: Int, offset: Int){
         viewModelScope.launch {
             val pokeResponse = withContext(Dispatchers.IO){
-                getPokemonsUseCase()
+                getPokemonsUseCase(limit, offset)
             }
             pokeModel.value = pokeResponse
         }

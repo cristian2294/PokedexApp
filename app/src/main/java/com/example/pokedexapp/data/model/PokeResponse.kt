@@ -33,7 +33,6 @@ data class Pokemon(
     var sprites: Sprite,
     @SerializedName("types")
     var types: List<PokeType>
-
 )
 
 data class Sprite(
@@ -65,9 +64,10 @@ data class PokeType(
 
 data class Type(
     @SerializedName("name")
-    var name: String,
+    var name: String?,
     @SerializedName("url")
     var url: String
 )
+
 
 

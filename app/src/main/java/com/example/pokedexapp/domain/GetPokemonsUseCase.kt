@@ -7,5 +7,5 @@ class GetPokemonsUseCase {
 
     private val respository = PokeRepository()
 
-    suspend operator fun invoke(): PokeResponse = respository.getAllPokemons()
+    suspend operator fun invoke(limit: Int, offset:Int): PokeResponse = respository.getAllPokemons(limit, offset)
 }

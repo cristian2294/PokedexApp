@@ -1,8 +1,8 @@
 package com.example.pokedexapp.ui.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +19,10 @@ private  var pokemonList : RecyclerView? = null
 private lateinit var pokemondapter: PokemonAdapter
 private lateinit var layoutManager: RecyclerView.LayoutManager
 
+private val limit = 150
+private var offset = 0
+private var isScrolling = true
+
 class PokemonActivity : AppCompatActivity() {
 
     // Init VM
@@ -31,7 +35,8 @@ class PokemonActivity : AppCompatActivity() {
 
         pokemonList = binding.rvPokemons
 
-        pokemonViewModel.getPokemons()
+        isScrolling = true
+        pokemonViewModel.getPokemons(limit, offset)
 
         // Create the observer which updates the UI.
         val pokeObserver = Observer<PokeResponse> { pokeResponse ->
@@ -40,6 +45,8 @@ class PokemonActivity : AppCompatActivity() {
             pokemonList?.layoutManager = layoutManager
             pokemondapter = PokemonAdapter(pokeResponse.results, this)
             pokemonList?.adapter = pokemondapter
+
+            // for pagination
         }
 
         // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
