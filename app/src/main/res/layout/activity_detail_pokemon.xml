@@ -101,7 +101,6 @@
                 android:textColor="@color/black"
                 />
 
-
                 <TextView
                     android:id="@+id/tvDetailTypePokemon1"
                     android:layout_width="wrap_content"
@@ -118,7 +117,8 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/roboto_condensed_regular"
                 android:text="@string/type_pokemon"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_marginTop="4dp"/>
             <View
                 android:id="@+id/divider"
                 android:layout_width="match_parent"
