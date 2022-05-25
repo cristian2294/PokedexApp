@@ -4,7 +4,8 @@ import com.example.pokedexapp.data.PokeResponse
 import com.example.pokedexapp.data.Pokemon
 import com.example.pokedexapp.data.network.PokeService
 
-class PokeRepository {
+
+class PokeAPIRepository() {
 
     private val api =  PokeService()
 
