@@ -14,9 +14,9 @@ class PokeRoomRepository(private val pokeFavDAO: PokeFavDAO) {
     // By default Room runs suspend queries off the main thread, therefore, we don't need to
     // implement anything else to ensure we're not doing long running database work
     // off the main thread.
-    @Suppress("RedundantSuspendModifier")
+   @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun addFavoritePokemon(pokemonFavEntity: PokeFavEntity) {
-        pokeFavDAO.addFavoritePokemon(pokemonFavEntity)
+    suspend fun addFavoritePokemon(pokeFavEntity: PokeFavEntity) {
+        pokeFavDAO.addFavoritePokemon(pokeFavEntity)
     }
 }
