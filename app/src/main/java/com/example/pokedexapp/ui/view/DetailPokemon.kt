@@ -3,14 +3,14 @@ package com.example.pokedexapp.ui.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
-import com.example.pokedexapp.data.PokeResponse
+import com.example.pokedexapp.R
 import com.example.pokedexapp.data.PokeType
 import com.example.pokedexapp.data.Pokemon
 import com.example.pokedexapp.data.database.PokeApplication
@@ -112,6 +112,7 @@ class DetailPokemon : AppCompatActivity() {
             //pokeResponse.types
         )
         detailpokemonViewModel.addFavoritePokemon(pokeFavEntity)
-        Log.d("POKE_FAVORITO",pokeResponse.name)
+        val messageSucces = getString(R.string.add_favorite_pokemon)
+        Toast.makeText(this, messageSucces, Toast.LENGTH_SHORT).show()
     }
 }

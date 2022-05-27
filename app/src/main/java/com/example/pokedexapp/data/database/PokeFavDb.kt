@@ -36,27 +36,5 @@ abstract class PokeFavDb: RoomDatabase() {
                 instance
             }
         }
-
-        /*
-        fun getDatabase(context: Context): PokeFavDb? {
-            if (INSTANCE == null){
-                INSTANCE = Room.databaseBuilder(
-                    context.applicationContext,
-                    PokeFavDb::class.java,
-                    "favoritesPokemonDatabase"
-                ).allowMainThreadQueries()
-                    .build()
-            }
-
-            return INSTANCE
-        }
-
-         */
-
-        /*
-        fun destroyInstance(){
-            INSTANCE = null
-        }
-         */
     }
 }

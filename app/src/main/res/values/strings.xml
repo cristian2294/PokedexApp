@@ -12,4 +12,6 @@
     <string name="type_pokemon">Type</string>
     <string name="home">Home</string>
     <string name="pokemon_team">My Team</string>
+
+    <string name="add_favorite_pokemon">El pokemon se ha añadido a tus favoritos exitosamente! </string>
 </resources>

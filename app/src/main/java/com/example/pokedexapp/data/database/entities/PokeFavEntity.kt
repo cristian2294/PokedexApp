@@ -21,6 +21,4 @@ data class PokeFavEntity (
     var weight: Int,
     @ColumnInfo(name = "url_photo")
     var urlPhoto: String,
-    //@ColumnInfo(name = "types")
-    //var types: List<PokeType>
     )
