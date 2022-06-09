@@ -1,14 +1,12 @@
 package com.example.pokedexapp.ui.viewmodel
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.pokedexapp.data.Pokemon
 import com.example.pokedexapp.data.database.entities.PokeFavEntity
 import com.example.pokedexapp.data.repository.PokeRoomRepository
 import com.example.pokedexapp.domain.AddFavoritePokemonUseCase
 import com.example.pokedexapp.domain.GetDetailPokemonUseCase
+import com.example.pokedexapp.domain.GetAllFavoritePokemonUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -16,8 +14,11 @@ import kotlinx.coroutines.withContext
 class DetailPokemonViewModel(private val repository: PokeRoomRepository): ViewModel() {
 
     val pokeModel = MutableLiveData<Pokemon>()
-    val getDetailPokemonUseCase = GetDetailPokemonUseCase()
-    val addFavoritePokemonUseCase = AddFavoritePokemonUseCase(repository)
+    private val getDetailPokemonUseCase = GetDetailPokemonUseCase()
+    private val addFavoritePokemonUseCase = AddFavoritePokemonUseCase(repository)
+    private val getAllFavoritePokemonUseCase = GetAllFavoritePokemonUseCase(repository)
+    private lateinit var allFavoritePokemon:LiveData<List<PokeFavEntity>>
+
 
     fun getDetailPokemon(name: String){
         viewModelScope.launch {
@@ -35,6 +36,12 @@ class DetailPokemonViewModel(private val repository: PokeRoomRepository): ViewMo
         withContext(Dispatchers.IO){
             addFavoritePokemonUseCase(pokeFavEntity)
         }
+    }
+
+
+    fun getAllFavoritePokemons():LiveData<List<PokeFavEntity>>{
+        allFavoritePokemon =  getAllFavoritePokemonUseCase.getAllFavoritePokemon()
+        return allFavoritePokemon
     }
 }
 

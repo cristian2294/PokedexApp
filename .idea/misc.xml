@@ -12,7 +12,9 @@
         <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/layout/activity_detail_pokemon.xml" value="0.25" />
         <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/layout/activity_pokemon.xml" value="0.15" />
+        <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/layout/activity_team_pokemon.xml" value="0.18" />
         <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/layout/template_list_pokemons.xml" value="0.2" />
+        <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/layout/template_list_team_pokemon.xml" value="0.33" />
         <entry key="..\:/Users/CRISTIAN/AndroidStudioProjects/PokedexApp/app/src/main/res/menu/bottom_menu.xml" value="0.2" />
       </map>
     </option>

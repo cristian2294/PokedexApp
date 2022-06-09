@@ -3,6 +3,7 @@ package com.example.pokedexapp.ui.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -28,7 +29,6 @@ class DetailPokemon : AppCompatActivity() {
     private lateinit var binding: ActivityDetailPokemonBinding
 
     // Init VM
-    //private val detailpokemonViewModel: DetailPokemonViewModel by viewModels()
     private val detailpokemonViewModel: DetailPokemonViewModel by viewModels{
         DetailpokemonViewModelFactory((application as PokeApplication).repository)
     }
@@ -78,9 +78,27 @@ class DetailPokemon : AppCompatActivity() {
             Glide.with(this).load(pokeResponse.sprites.other.officialArtwork.front_default)
                 .into(ivDetailPokemon)
 
-
             btnFavPokemon.setOnClickListener {
                 addFavoritePokemon(pokeResponse)
+            }
+
+            bottonNavigationView.setOnItemSelectedListener{ item ->
+                when(item.itemId){
+                    R.id.team -> {
+                        val intent = Intent(this, TeamPokemon::class.java)
+                        startActivity(intent)
+                        true
+                    }
+
+                    R.id.home -> {
+                        //Toast.makeText(this, "HOME", Toast.LENGTH_SHORT).show()
+                        //TODO implement back home
+                        true
+                    }
+
+                    else -> false
+                }
+
             }
         }
 

@@ -11,19 +11,20 @@ import com.example.pokedexapp.databinding.ActivityPokemonBinding
 import com.example.pokedexapp.ui.adapter.PokemonAdapter
 import com.example.pokedexapp.ui.viewmodel.PokemonViewModel
 
-// viewBinding
-private lateinit var binding:ActivityPokemonBinding
-
-// variables for recyclerView
-private  var pokemonList : RecyclerView? = null
-private lateinit var pokemondapter: PokemonAdapter
-private lateinit var layoutManager: RecyclerView.LayoutManager
-
-private val limit = 150
-private var offset = 0
-private var isScrolling = true
 
 class PokemonActivity : AppCompatActivity() {
+
+    // viewBinding
+    private lateinit var binding:ActivityPokemonBinding
+
+    // variables for recyclerView
+    private  var pokemonList : RecyclerView? = null
+    private lateinit var pokemondapter: PokemonAdapter
+    private lateinit var layoutManager: RecyclerView.LayoutManager
+
+    private val limit = 150
+    private var offset = 0
+    private var isScrolling = true
 
     // Init VM
     private val pokemonViewModel: PokemonViewModel by viewModels()
@@ -52,5 +53,4 @@ class PokemonActivity : AppCompatActivity() {
         // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
         pokemonViewModel.pokeModel.observe(this, pokeObserver)
     }
-
 }

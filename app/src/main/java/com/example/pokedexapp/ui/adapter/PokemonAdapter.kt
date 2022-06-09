@@ -41,9 +41,5 @@ class PokemonAdapter(private val pokemonList: List<Result>, private val context:
         }
     }
 
-    override fun getItemCount(): Int {
-        return pokemonList.size
-    }
-
-
+    override fun getItemCount(): Int = pokemonList.size
 }
