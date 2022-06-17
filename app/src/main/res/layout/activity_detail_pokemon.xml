@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/text"
-            android:src="@drawable/ic_favorites"
+            android:src="@drawable/ic_favorites_white"
             app:layout_anchor="@+id/bottomMenu"
             app:layout_anchorGravity="center"
             app:maxImageSize="20dp"

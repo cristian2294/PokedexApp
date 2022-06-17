@@ -7,6 +7,7 @@ import com.example.pokedexapp.data.repository.PokeRoomRepository
 import com.example.pokedexapp.domain.AddFavoritePokemonUseCase
 import com.example.pokedexapp.domain.GetDetailPokemonUseCase
 import com.example.pokedexapp.domain.GetAllFavoritePokemonUseCase
+import com.example.pokedexapp.domain.RemoveFavoritePokemonUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -17,6 +18,7 @@ class DetailPokemonViewModel(private val repository: PokeRoomRepository): ViewMo
     private val getDetailPokemonUseCase = GetDetailPokemonUseCase()
     private val addFavoritePokemonUseCase = AddFavoritePokemonUseCase(repository)
     private val getAllFavoritePokemonUseCase = GetAllFavoritePokemonUseCase(repository)
+    private val removeFavoritePokemonUseCase = RemoveFavoritePokemonUseCase(repository)
     private lateinit var allFavoritePokemon:LiveData<List<PokeFavEntity>>
 
 
@@ -35,6 +37,15 @@ class DetailPokemonViewModel(private val repository: PokeRoomRepository): ViewMo
     fun addFavoritePokemon(pokeFavEntity: PokeFavEntity) = viewModelScope.launch {
         withContext(Dispatchers.IO){
             addFavoritePokemonUseCase(pokeFavEntity)
+        }
+    }
+
+    /**
+     * Launching a new coroutine to remove the data in a non-blocking way
+     */
+    fun removeFavoritePokemon(pokeFavEntity: PokeFavEntity) = viewModelScope.launch {
+        withContext(Dispatchers.IO){
+            removeFavoritePokemonUseCase(pokeFavEntity)
         }
     }
 
