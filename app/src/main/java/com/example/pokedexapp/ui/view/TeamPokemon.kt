@@ -3,7 +3,6 @@ package com.example.pokedexapp.ui.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexapp.data.database.PokeApplication
@@ -32,13 +31,13 @@ class TeamPokemon : AppCompatActivity() {
         binding = ActivityTeamPokemonBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        detailpokemonViewModel.getAllFavoritePokemons().observe(this, Observer { teamPokemon ->
+        detailpokemonViewModel.getAllFavoritePokemons().observe(this) { teamPokemon ->
             teamPokemonList = binding.rvTeamPokemon
             layoutManager = LinearLayoutManager(this)
             teamPokemonList?.layoutManager = layoutManager
-            teamPokemondapter = TeamPokemonAdapter(this)
+            teamPokemondapter = TeamPokemonAdapter(this, detailpokemonViewModel)
             teamPokemonList?.adapter = teamPokemondapter
             teamPokemondapter.setData(teamPokemon)
-        })
+        }
     }
 }

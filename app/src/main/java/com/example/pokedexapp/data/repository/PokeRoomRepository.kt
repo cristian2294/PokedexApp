@@ -19,4 +19,12 @@ class PokeRoomRepository(private val pokeFavDAO: PokeFavDAO) {
     suspend fun addFavoritePokemon(pokeFavEntity: PokeFavEntity) {
         pokeFavDAO.addFavoritePokemon(pokeFavEntity)
     }
+
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun removeFavoritePokemon(pokeFavEntity: PokeFavEntity) {
+        pokeFavDAO.removeFavoritePokemon(pokeFavEntity)
+    }
+
 }

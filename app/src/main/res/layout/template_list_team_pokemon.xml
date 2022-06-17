@@ -14,6 +14,19 @@
         android:layout_height="wrap_content"
         android:layout_margin="3dp">
 
+        <ToggleButton
+            android:id="@+id/btn_team_pokemon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textOn=""
+            android:textOff=""
+            android:checked="true"
+            android:background="@drawable/favorite_selector"/>
+
         <ImageView
             android:id="@+id/iv_team_pokemon"
             android:layout_width="100dp"
