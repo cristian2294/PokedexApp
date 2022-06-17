@@ -44,7 +44,7 @@ class TeamPokemonAdapter(private val context: Context,
 
     private fun removeFavoritePokemon(pokeFavEntity: PokeFavEntity) {
         detailpokemonViewModel.removeFavoritePokemon(pokeFavEntity)
-        val messageSucces = Resources.getSystem().getString(R.string.remove_favorite_pokemon)
+        val messageSucces = "El pokemon se ha removido de tus favoritos exitosamente!"
         Toast.makeText(context, messageSucces, Toast.LENGTH_SHORT).show()
     }
 
