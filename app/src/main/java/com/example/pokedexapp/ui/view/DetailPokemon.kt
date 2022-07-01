@@ -1,6 +1,8 @@
 package com.example.pokedexapp.ui.view
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,9 +10,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import androidx.palette.graphics.Palette
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.example.pokedexapp.R
 import com.example.pokedexapp.data.PokeType
 import com.example.pokedexapp.data.Pokemon
@@ -43,6 +53,7 @@ class DetailPokemon : AppCompatActivity() {
     private lateinit var tvDetailTypePokemon2: TextView
     private lateinit var bottonNavigationView: BottomNavigationView
     private lateinit var btnFavPokemon: FloatingActionButton
+    private lateinit var constraintLayout: ConstraintLayout
 
     private lateinit var types: List<PokeType>
 
@@ -74,8 +85,41 @@ class DetailPokemon : AppCompatActivity() {
                 tvDetailTypePokemon2.text = types[1].type.name
                 tvDetailTypePokemon2.isVisible = true
             }
+            
+            Glide.with(this)
+                .load(pokeResponse.sprites.other.officialArtwork.front_default).listener(object : RequestListener<Drawable>{
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        Log.d("DetailImgError", "Image not working")
+                        return false
+                    }
 
-            Glide.with(this).load(pokeResponse.sprites.other.officialArtwork.front_default)
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        Palette.from(resource!!.toBitmap()).generate {
+                                palette -> palette?.let {
+                            val startColor =  R.color.black
+                            val endColor = it.dominantSwatch?.rgb?: 0
+                            val gradientDrawable = GradientDrawable(
+                                GradientDrawable.Orientation.TOP_BOTTOM,
+                                intArrayOf(startColor,endColor)
+                            )
+                            constraintLayout.background = gradientDrawable
+                        }
+                        }
+                        return false
+                    }
+                })
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(ivDetailPokemon)
 
             btnFavPokemon.setOnClickListener {
@@ -116,6 +160,7 @@ class DetailPokemon : AppCompatActivity() {
          tvDetailTypePokemon2 = binding.tvDetailTypePokemon2
          bottonNavigationView = binding.bottomNavigationView
          btnFavPokemon = binding.btnFavPokemon
+         constraintLayout = binding.containerDetailPokemon
 
          bottonNavigationView.setBackgroundColor(0)
     }

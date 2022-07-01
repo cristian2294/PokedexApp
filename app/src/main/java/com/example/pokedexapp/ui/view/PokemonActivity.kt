@@ -22,7 +22,7 @@ class PokemonActivity : AppCompatActivity() {
     private lateinit var pokemondapter: PokemonAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
 
-    private val limit = 150
+    private val limit = 100000
     private var offset = 0
     private var isScrolling = true
 

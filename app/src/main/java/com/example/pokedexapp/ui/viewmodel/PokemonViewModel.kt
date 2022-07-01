@@ -13,7 +13,7 @@ import kotlinx.coroutines.withContext
 class PokemonViewModel: ViewModel(){
 
     val pokeModel = MutableLiveData<PokeResponse>()
-    var getPokemonsUseCase = GetPokemonsUseCase()
+    private var getPokemonsUseCase = GetPokemonsUseCase()
 
     fun getPokemons(limit: Int, offset: Int){
         viewModelScope.launch {

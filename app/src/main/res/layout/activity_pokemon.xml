@@ -6,17 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.view.PokemonActivity"
-    android:background="#e6e6e6">
+    >
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view_pokemon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_margin="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="Busca un pokemon..."
+        app:queryHint="Search..."
         android:background="@drawable/search_view_bg"
         app:iconifiedByDefault="false"
         />
@@ -26,9 +27,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/search_view_pokemon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_view_pokemon" />
-
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
