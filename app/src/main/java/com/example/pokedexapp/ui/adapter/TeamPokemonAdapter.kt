@@ -38,14 +38,6 @@ class TeamPokemonAdapter(private val context: Context,
         val teamPokemon = teamPokemonList[position]
         holder.idTeamPokemon.text = "N° ${(position+1)}"
         holder.nameTeamPokemon.text =  teamPokemon.name
-        /*
-        Glide.with(context)
-            .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${teamPokemon.id}.png")
-            .centerCrop()
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .into(holder.ivTeamPokemon)
-         */
-
         Glide.with(context)
             .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${teamPokemon.id}.png")
             .listener(object : RequestListener<Drawable>{
