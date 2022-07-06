@@ -73,7 +73,7 @@ class DetailPokemon : AppCompatActivity() {
             tvDetailIdPokemon.text = "N° ${pokeResponse.id}"
             tvDetailNamePokemon.text = pokeResponse.name
             tvDetailWeightPokemon.text = "${((pokeResponse.weight)*100f/1000f)} Kg"
-            tvDetailHeightPokemon.text = "${pokeResponse.height} Mts"
+            tvDetailHeightPokemon.text = "${pokeResponse.height/10f} Mts"
             types = pokeResponse.types
 
             tvDetailTypePokemon1.text = types[0].type.name
@@ -85,7 +85,7 @@ class DetailPokemon : AppCompatActivity() {
                 tvDetailTypePokemon2.text = types[1].type.name
                 tvDetailTypePokemon2.isVisible = true
             }
-            
+
             Glide.with(this)
                 .load(pokeResponse.sprites.other.officialArtwork.front_default).listener(object : RequestListener<Drawable>{
                     override fun onLoadFailed(
