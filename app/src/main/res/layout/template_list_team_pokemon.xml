@@ -12,7 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="3dp">
+        android:id="@+id/container_team_pokemon"
+        >
 
         <ToggleButton
             android:id="@+id/btn_team_pokemon"
@@ -45,7 +46,7 @@
             android:text="@string/idPokemon"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/number_id"
+            android:textColor="@color/black"
             android:layout_margin="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
