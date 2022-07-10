@@ -13,6 +13,6 @@
     <string name="home">Home</string>
     <string name="pokemon_team">My Team</string>
 
-    <string name="add_favorite_pokemon">El pokemon se ha añadido a tus favoritos exitosamente! </string>
-    <string name="remove_favorite_pokemon">El pokemon se ha removido de tus favoritos exitosamente! </string>
+    <string name="add_favorite_pokemon"> The pokemon has been added to your favorites successfully! </string>
+    <string name="remove_favorite_pokemon">The pokemon has been removed successfully  from your favorites </string>
 </resources>

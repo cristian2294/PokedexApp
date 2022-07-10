@@ -1,5 +1,6 @@
 package com.example.pokedexapp.ui.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
@@ -41,17 +42,19 @@ class PokemonAdapter(private val pokemonList: ArrayList<Result>, private val con
         return PokemonViewHolder(layoutView)
     }
 
-    //override fun getItemCount(): Int = pokemonList.size
     override fun getItemCount(): Int = pokemonFilterList.size
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
-        //val pokemon = pokemonList[position]
-        val pokemon = pokemonFilterList[position]
 
-        holder.id.text = "N° ${(position+1)}"
+        val pokemon = pokemonFilterList[position]
+        val partsUrl  = pokemon.url.split("/")
+        val number = partsUrl[partsUrl.size-2]
+        val uri = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$number.png"
+
+        holder.id.text = "N° ${(number)}"
         holder.name.text =  pokemon.name
         Glide.with(context)
-            .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+(position+1).toString()+".png").listener(object : RequestListener<Drawable>{
+            .load(uri).listener(object : RequestListener<Drawable>{
                 override fun onLoadFailed(
                     e: GlideException?,
                     model: Any?,
@@ -122,6 +125,7 @@ class PokemonAdapter(private val pokemonList: ArrayList<Result>, private val con
                 return filterResult
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             @Suppress("UNCHECKED_CAST")
             override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
                 pokemonFilterList = p1?.values as ArrayList<Result>
