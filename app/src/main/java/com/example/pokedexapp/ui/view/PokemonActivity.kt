@@ -3,6 +3,7 @@ package com.example.pokedexapp.ui.view
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,8 +18,10 @@ class PokemonActivity : AppCompatActivity() {
     // viewBinding
     private lateinit var binding:ActivityPokemonBinding
 
+    private lateinit var searchView: SearchView
+
     // variables for recyclerView
-    private  var pokemonList : RecyclerView? = null
+    private var pokemonRv : RecyclerView? = null
     private lateinit var pokemondapter: PokemonAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
 
@@ -34,7 +37,8 @@ class PokemonActivity : AppCompatActivity() {
         binding = ActivityPokemonBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        pokemonList = binding.rvPokemons
+        pokemonRv = binding.rvPokemons
+        searchView = binding.searchViewPokemon
 
         isScrolling = true
         pokemonViewModel.getPokemons(limit, offset)
@@ -43,11 +47,26 @@ class PokemonActivity : AppCompatActivity() {
         val pokeObserver = Observer<PokeResponse> { pokeResponse ->
             // Update the UI for show the data in the recyclerview
             layoutManager = GridLayoutManager(this,3)
-            pokemonList?.layoutManager = layoutManager
+            pokemonRv?.layoutManager = layoutManager
             pokemondapter = PokemonAdapter(pokeResponse.results, this)
-            pokemonList?.adapter = pokemondapter
+            pokemonRv?.adapter = pokemondapter
 
             // for pagination
+
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    pokemondapter.filter.filter(query)
+                    return false
+                }
+
+                //The onQueryTextChange method is called every time we type on the SearchView
+                // and update the RecyclerView with the new results.
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    pokemondapter.filter.filter(newText)
+                    return false
+                }
+
+            })
         }
 
         // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.

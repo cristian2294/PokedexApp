@@ -1,4 +1,3 @@
-
 package com.example.pokedexapp.ui.adapter
 
 import android.content.Context
@@ -8,6 +7,8 @@ import android.graphics.drawable.GradientDrawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.core.graphics.drawable.toBitmap
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView
@@ -21,9 +22,17 @@ import com.example.pokedexapp.R
 import com.example.pokedexapp.data.Result
 import com.example.pokedexapp.ui.view.DetailPokemon
 import com.example.pokedexapp.ui.viewholder.PokemonViewHolder
+import java.util.*
+import kotlin.collections.ArrayList
 
-class PokemonAdapter(private val pokemonList: List<Result>, private val context: Context)
-    : RecyclerView.Adapter<PokemonViewHolder>() {
+class PokemonAdapter(private val pokemonList: ArrayList<Result>, private val context: Context)
+    : RecyclerView.Adapter<PokemonViewHolder>(), Filterable {
+
+    var pokemonFilterList = ArrayList<Result>()
+
+    init {
+        pokemonFilterList = pokemonList
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
         val layoutView = LayoutInflater.from(parent.context)
@@ -32,9 +41,13 @@ class PokemonAdapter(private val pokemonList: List<Result>, private val context:
         return PokemonViewHolder(layoutView)
     }
 
+    //override fun getItemCount(): Int = pokemonList.size
+    override fun getItemCount(): Int = pokemonFilterList.size
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
-        val pokemon = pokemonList[position]
+        //val pokemon = pokemonList[position]
+        val pokemon = pokemonFilterList[position]
+
         holder.id.text = "N° ${(position+1)}"
         holder.name.text =  pokemon.name
         Glide.with(context)
@@ -58,12 +71,12 @@ class PokemonAdapter(private val pokemonList: List<Result>, private val context:
                 ): Boolean {
                     Palette.from(resource!!.toBitmap()).generate {
                             palette -> palette?.let {
-                                val startColor =  it.dominantSwatch?.rgb?: 0
-                                val endColor = 0
-                                val gradientDrawable = GradientDrawable(
-                                GradientDrawable.Orientation.TOP_BOTTOM,
-                                intArrayOf(startColor, endColor)
-                                )
+                        val startColor =  it.dominantSwatch?.rgb?: 0
+                        val endColor = 0
+                        val gradientDrawable = GradientDrawable(
+                            GradientDrawable.Orientation.TOP_BOTTOM,
+                            intArrayOf(startColor, endColor)
+                        )
                         holder.linearLayout.background = gradientDrawable
                     }
                     }
@@ -82,5 +95,40 @@ class PokemonAdapter(private val pokemonList: List<Result>, private val context:
         }
     }
 
-    override fun getItemCount(): Int = pokemonList.size
+    override fun getFilter(): Filter {
+        return object : Filter(){
+
+            //checks if we have typed a text in the SeachView.
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+                val charSearch = p0.toString()
+
+                //If there is not any text, will return all items
+                pokemonFilterList = if (charSearch.isEmpty()){
+                    pokemonList
+                }else{
+                    val resultList = ArrayList<Result>()
+
+                    for (i in pokemonList){
+                        if (i.name.lowercase(Locale.ROOT)
+                                .contains(charSearch.lowercase(Locale.ROOT))
+                        ){
+                            resultList.add(i)
+                        }
+                    }
+                    resultList
+                }
+                val filterResult = FilterResults()
+                filterResult.values = pokemonFilterList
+                return filterResult
+            }
+
+            @Suppress("UNCHECKED_CAST")
+            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+                pokemonFilterList = p1?.values as ArrayList<Result>
+                notifyDataSetChanged()
+            }
+
+        }
+    }
+
 }

@@ -135,8 +135,7 @@ class DetailPokemon : AppCompatActivity() {
                     }
 
                     R.id.home -> {
-                        //Toast.makeText(this, "HOME", Toast.LENGTH_SHORT).show()
-                        //TODO implement back home
+                        finish()
                         true
                     }
 

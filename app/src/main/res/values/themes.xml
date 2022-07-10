@@ -17,4 +17,15 @@
     <style name="SplashTheme" parent="Theme.PokedexApp">
         <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
+    
+    <style name="toolbartext" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">16dp</item>
+    </style>
+    
+    <style name="toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="background">@color/white</item>
+        <item name="theme">@style/Theme.PokedexApp</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="titleTextAppearance">@style/toolbartext</item>
+    </style>
 </resources>
