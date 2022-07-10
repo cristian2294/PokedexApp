@@ -36,10 +36,11 @@ class TeamPokemonAdapter(private val context: Context,
 
     override fun onBindViewHolder(holder: TeamPokemonViewHolder, position: Int) {
         val teamPokemon = teamPokemonList[position]
-        holder.idTeamPokemon.text = "N° ${(position+1)}"
+        holder.idTeamPokemon.text = "N° ${teamPokemon.id}"
         holder.nameTeamPokemon.text =  teamPokemon.name
+        val uri = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${teamPokemon.id}.png"
         Glide.with(context)
-            .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${teamPokemon.id}.png")
+            .load(uri)
             .listener(object : RequestListener<Drawable>{
                 override fun onLoadFailed(
                     e: GlideException?,
@@ -86,7 +87,7 @@ class TeamPokemonAdapter(private val context: Context,
 
     private fun removeFavoritePokemon(pokeFavEntity: PokeFavEntity) {
         detailpokemonViewModel.removeFavoritePokemon(pokeFavEntity)
-        val messageSucces = "El pokemon se ha removido de tus favoritos exitosamente!"
+        val messageSucces = "The pokemon has been successfully removed from your favorites!"
         Toast.makeText(context, messageSucces, Toast.LENGTH_SHORT).show()
     }
 

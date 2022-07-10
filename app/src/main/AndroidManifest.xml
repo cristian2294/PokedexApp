@@ -12,7 +12,9 @@
         android:theme="@style/Theme.PokedexApp">
         <activity
             android:name=".ui.view.TeamPokemon"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.view.PokemonActivity"
+            />
         <activity
             android:name=".ui.view.DetailPokemon"
             android:exported="true" />
