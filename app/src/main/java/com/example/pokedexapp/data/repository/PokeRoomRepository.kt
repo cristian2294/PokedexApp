@@ -4,8 +4,9 @@ import androidx.annotation.WorkerThread
 import com.example.pokedexapp.data.database.dao.PokeFavDAO
 import com.example.pokedexapp.data.database.entities.PokeFavEntity
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class PokeRoomRepository(private val pokeFavDAO: PokeFavDAO) {
+class PokeRoomRepository @Inject constructor(private val pokeFavDAO: PokeFavDAO) {
 
     // Declares the DAO as a private property in the constructor. Pass in the DAO
     // instead of the whole database, because you only need access to the DAO
@@ -19,7 +20,6 @@ class PokeRoomRepository(private val pokeFavDAO: PokeFavDAO) {
     suspend fun addFavoritePokemon(pokeFavEntity: PokeFavEntity) {
         pokeFavDAO.addFavoritePokemon(pokeFavEntity)
     }
-
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread

@@ -7,12 +7,14 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedexapp.data.PokeResponse
+import com.example.pokedexapp.data.model.PokeResponse
 import com.example.pokedexapp.databinding.ActivityPokemonBinding
 import com.example.pokedexapp.ui.adapter.PokemonAdapter
 import com.example.pokedexapp.ui.viewmodel.PokemonViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class PokemonActivity : AppCompatActivity() {
 
     // viewBinding

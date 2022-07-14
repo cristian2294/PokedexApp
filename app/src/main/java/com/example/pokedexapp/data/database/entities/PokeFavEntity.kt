@@ -3,10 +3,6 @@ package com.example.pokedexapp.data.database.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.pokedexapp.data.PokeType
-import com.example.pokedexapp.data.Pokemon
-import com.example.pokedexapp.data.Sprite
-
 
 @Entity(tableName = "pokeFav")
 data class PokeFavEntity (

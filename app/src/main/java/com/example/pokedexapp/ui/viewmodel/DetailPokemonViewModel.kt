@@ -1,24 +1,30 @@
 package com.example.pokedexapp.ui.viewmodel
 
 import androidx.lifecycle.*
-import com.example.pokedexapp.data.Pokemon
+import com.example.pokedexapp.data.model.Pokemon
 import com.example.pokedexapp.data.database.entities.PokeFavEntity
 import com.example.pokedexapp.data.repository.PokeRoomRepository
 import com.example.pokedexapp.domain.AddFavoritePokemonUseCase
 import com.example.pokedexapp.domain.GetDetailPokemonUseCase
 import com.example.pokedexapp.domain.GetAllFavoritePokemonUseCase
 import com.example.pokedexapp.domain.RemoveFavoritePokemonUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class DetailPokemonViewModel(private val repository: PokeRoomRepository): ViewModel() {
+
+@HiltViewModel
+class DetailPokemonViewModel @Inject constructor(
+    private val repository: PokeRoomRepository,
+    private val getDetailPokemonUseCase: GetDetailPokemonUseCase,
+    private val addFavoritePokemonUseCase: AddFavoritePokemonUseCase,
+    private val getAllFavoritePokemonUseCase: GetAllFavoritePokemonUseCase,
+    private val removeFavoritePokemonUseCase: RemoveFavoritePokemonUseCase
+    ): ViewModel() {
 
     val pokeModel = MutableLiveData<Pokemon>()
-    private val getDetailPokemonUseCase = GetDetailPokemonUseCase()
-    private val addFavoritePokemonUseCase = AddFavoritePokemonUseCase(repository)
-    private val getAllFavoritePokemonUseCase = GetAllFavoritePokemonUseCase(repository)
-    private val removeFavoritePokemonUseCase = RemoveFavoritePokemonUseCase(repository)
     private lateinit var allFavoritePokemon:LiveData<List<PokeFavEntity>>
 
 
@@ -49,18 +55,26 @@ class DetailPokemonViewModel(private val repository: PokeRoomRepository): ViewMo
         }
     }
 
-
     fun getAllFavoritePokemons():LiveData<List<PokeFavEntity>>{
         allFavoritePokemon =  getAllFavoritePokemonUseCase.getAllFavoritePokemon()
         return allFavoritePokemon
     }
 }
 
-class DetailpokemonViewModelFactory(private val repository: PokeRoomRepository) : ViewModelProvider.Factory {
+class DetailpokemonViewModelFactory @Inject constructor(private val repository: PokeRoomRepository,
+                                                        private val getDetailPokemonUseCase: GetDetailPokemonUseCase,
+                                                        private val addFavoritePokemonUseCase: AddFavoritePokemonUseCase,
+                                                        private val getAllFavoritePokemonUseCase: GetAllFavoritePokemonUseCase,
+                                                        private val removeFavoritePokemonUseCase: RemoveFavoritePokemonUseCase
+    ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(DetailPokemonViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return DetailPokemonViewModel(repository) as T
+            return DetailPokemonViewModel(repository ,
+                getDetailPokemonUseCase,
+                addFavoritePokemonUseCase,
+                getAllFavoritePokemonUseCase,
+                removeFavoritePokemonUseCase) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

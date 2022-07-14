@@ -3,16 +3,27 @@ package com.example.pokedexapp.ui.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexapp.data.database.PokeApplication
 import com.example.pokedexapp.databinding.ActivityTeamPokemonBinding
+import com.example.pokedexapp.domain.AddFavoritePokemonUseCase
+import com.example.pokedexapp.domain.GetAllFavoritePokemonUseCase
+import com.example.pokedexapp.domain.GetDetailPokemonUseCase
+import com.example.pokedexapp.domain.RemoveFavoritePokemonUseCase
 import com.example.pokedexapp.ui.adapter.TeamPokemonAdapter
 import com.example.pokedexapp.ui.viewmodel.DetailPokemonViewModel
 import com.example.pokedexapp.ui.viewmodel.DetailpokemonViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class TeamPokemon : AppCompatActivity() {
+@AndroidEntryPoint
+class TeamPokemon: AppCompatActivity() {
+
+    @Inject lateinit var getDetailPokemonUseCase: GetDetailPokemonUseCase
+    @Inject lateinit var addFavoritePokemonUseCase: AddFavoritePokemonUseCase
+    @Inject lateinit var getAllFavoritePokemonUseCase: GetAllFavoritePokemonUseCase
+    @Inject lateinit var removeFavoritePokemonUseCase: RemoveFavoritePokemonUseCase
 
     // viewBinding
     private lateinit var binding: ActivityTeamPokemonBinding
@@ -22,12 +33,14 @@ class TeamPokemon : AppCompatActivity() {
     private lateinit var teamPokemondapter: TeamPokemonAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
 
-    // ui
-    private lateinit var toolbar: Toolbar
 
     // Init VM
     private val detailpokemonViewModel: DetailPokemonViewModel by viewModels{
-        DetailpokemonViewModelFactory((application as PokeApplication).repository)
+        DetailpokemonViewModelFactory((application as PokeApplication).repository,
+            getDetailPokemonUseCase,
+            addFavoritePokemonUseCase,
+            getAllFavoritePokemonUseCase,
+            removeFavoritePokemonUseCase)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
