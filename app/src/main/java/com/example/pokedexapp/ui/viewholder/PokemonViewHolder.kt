@@ -4,10 +4,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexapp.R
-
 
 class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

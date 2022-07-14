@@ -1,11 +1,10 @@
 package com.example.pokedexapp.domain
 
 import com.example.pokedexapp.data.repository.PokeAPIRepository
-import com.example.pokedexapp.data.PokeResponse
+import com.example.pokedexapp.data.model.PokeResponse
+import javax.inject.Inject
 
-class GetPokemonsUseCase {
+class GetPokemonsUseCase @Inject constructor(private val repository: PokeAPIRepository) {
 
-    private val respository = PokeAPIRepository()
-
-    suspend operator fun invoke(limit: Int, offset:Int): PokeResponse = respository.getAllPokemons(limit, offset)
+    suspend operator fun invoke(limit: Int, offset:Int): PokeResponse = repository.getAllPokemons(limit, offset)
 }

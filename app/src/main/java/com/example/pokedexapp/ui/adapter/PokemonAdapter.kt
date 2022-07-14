@@ -20,7 +20,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.pokedexapp.R
-import com.example.pokedexapp.data.Result
+import com.example.pokedexapp.data.model.Result
 import com.example.pokedexapp.ui.view.DetailPokemon
 import com.example.pokedexapp.ui.viewholder.PokemonViewHolder
 import java.util.*

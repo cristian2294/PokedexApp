@@ -22,25 +22,42 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.pokedexapp.R
-import com.example.pokedexapp.data.PokeType
-import com.example.pokedexapp.data.Pokemon
+import com.example.pokedexapp.data.model.PokeType
+import com.example.pokedexapp.data.model.Pokemon
 import com.example.pokedexapp.data.database.PokeApplication
 import com.example.pokedexapp.data.database.entities.PokeFavEntity
 import com.example.pokedexapp.databinding.ActivityDetailPokemonBinding
+import com.example.pokedexapp.domain.AddFavoritePokemonUseCase
+import com.example.pokedexapp.domain.GetAllFavoritePokemonUseCase
+import com.example.pokedexapp.domain.GetDetailPokemonUseCase
+import com.example.pokedexapp.domain.RemoveFavoritePokemonUseCase
 import com.example.pokedexapp.ui.viewmodel.DetailPokemonViewModel
 import com.example.pokedexapp.ui.viewmodel.DetailpokemonViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
+@AndroidEntryPoint
 class DetailPokemon : AppCompatActivity() {
+
+    @Inject lateinit var getDetailPokemonUseCase: GetDetailPokemonUseCase
+    @Inject lateinit var addFavoritePokemonUseCase: AddFavoritePokemonUseCase
+    @Inject lateinit var getAllFavoritePokemonUseCase: GetAllFavoritePokemonUseCase
+    @Inject lateinit var removeFavoritePokemonUseCase: RemoveFavoritePokemonUseCase
 
     // viewBinding
     private lateinit var binding: ActivityDetailPokemonBinding
 
     // Init VM
     private val detailpokemonViewModel: DetailPokemonViewModel by viewModels{
-        DetailpokemonViewModelFactory((application as PokeApplication).repository)
+        DetailpokemonViewModelFactory((application as PokeApplication).repository,
+            getDetailPokemonUseCase,
+            addFavoritePokemonUseCase,
+            getAllFavoritePokemonUseCase,
+            removeFavoritePokemonUseCase
+            )
     }
 
     //UI variables

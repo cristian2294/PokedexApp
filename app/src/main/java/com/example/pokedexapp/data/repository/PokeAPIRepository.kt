@@ -1,13 +1,12 @@
 package com.example.pokedexapp.data.repository
 
-import com.example.pokedexapp.data.PokeResponse
-import com.example.pokedexapp.data.Pokemon
+import com.example.pokedexapp.data.model.PokeResponse
+import com.example.pokedexapp.data.model.Pokemon
 import com.example.pokedexapp.data.network.PokeService
+import javax.inject.Inject
 
 
-class PokeAPIRepository() {
-
-    private val api =  PokeService()
+class PokeAPIRepository @Inject constructor(private val api: PokeService) {
 
     suspend fun getAllPokemons(limit: Int, offset:Int): PokeResponse {
         val pokeResponse = api.getPokemons(limit, offset)
