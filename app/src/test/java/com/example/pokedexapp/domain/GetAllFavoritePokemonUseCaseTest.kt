@@ -33,7 +33,7 @@ class GetAllFavoritePokemonUseCaseTest{
     @Test
     fun `when the database is not empty return a favorite pokemon list`(){
         //Given
-        val list: LiveData<PokeFavEntity> = listOf(PokeFavEntity(0,
+        val pokeFavList: LiveData<PokeFavEntity> = listOf(PokeFavEntity(0,
             "pikachu",
             1,
             3,

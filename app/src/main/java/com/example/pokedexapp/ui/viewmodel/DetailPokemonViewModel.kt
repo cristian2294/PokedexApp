@@ -59,6 +59,7 @@ class DetailPokemonViewModel @Inject constructor(
         allFavoritePokemon =  getAllFavoritePokemonUseCase.getAllFavoritePokemon()
         return allFavoritePokemon
     }
+
 }
 
 class DetailpokemonViewModelFactory @Inject constructor(private val repository: PokeRoomRepository,

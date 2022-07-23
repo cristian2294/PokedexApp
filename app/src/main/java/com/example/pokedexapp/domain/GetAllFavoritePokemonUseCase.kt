@@ -8,8 +8,7 @@ import javax.inject.Inject
 
 class GetAllFavoritePokemonUseCase @Inject constructor(private val repository: PokeRoomRepository) {
 
-    fun  getAllFavoritePokemon():LiveData<List<PokeFavEntity>>{
-        val allFavPokemon: LiveData<List<PokeFavEntity>> = repository.allFavPokemons.asLiveData()
-        return allFavPokemon
+    fun getAllFavoritePokemon(): LiveData<List<PokeFavEntity>> {
+        return repository.allFavPokemons.asLiveData()
     }
 }
