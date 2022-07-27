@@ -31,14 +31,11 @@ here share with you some screenshots
 ####Pokemon List View
 ![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/drawable-v24/img2.png)
 
-
 ####Searching a pokemon
 ![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/drawable-v24/img3.png)
 
-
 ####Pokemon Detail View
 ![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/drawable-v24/img4.png)
-
 
 ####Team pokemon View
 ![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/drawable-v24/img5.png)
