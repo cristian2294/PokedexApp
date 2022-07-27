@@ -25,43 +25,23 @@ some topics and frameworks that I implemented in this app were
 
 here share with you some screenshots
 
-<<<<<<< HEAD
 ####Splash screen
 ![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/screenshots/img1.png)
 
 ####Pokemon List View
-![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/drawable-v24/img1.png)
-
-
-####Searching a pokemon
-![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/drawable-v24/img1.png)
-
-
-####Pokemon Detail View
-![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/drawable-v24/img1.png)
-
-
-####Team pokemon View
-![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/drawable-v24/img1.png)
-=======
-######Splash screen
-![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/drawable-v24/img1.png)
-
-######Pokemon List View
 ![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/drawable-v24/img2.png)
 
 
-######Searching a pokemon
+####Searching a pokemon
 ![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/drawable-v24/img3.png)
 
 
-######Pokemon Detail View
+####Pokemon Detail View
 ![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/drawable-v24/img4.png)
 
 
-######Team pokemon View
+####Team pokemon View
 ![ScreenShot](https://github.com/cristian2294/PokedexApp/blob/main/app/src/main/res/drawable-v24/img5.png)
->>>>>>> c03dd879bf0fb9da9bb8dbfc719e359130b154f7
 
 ##Notes
 
